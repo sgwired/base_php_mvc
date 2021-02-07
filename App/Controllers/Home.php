@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Core\View;
+
 /**
  * Home controller
  *
@@ -38,6 +40,18 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        echo 'Hello from the index action in the Home controller!';
+        // echo 'Hello from the index action in the Home controller!';
+        View::render('Home/index.php', ['name' => 'Shelton', 'colors' => ['blue', 'green', 'yellow']]);
+    }
+
+    /**
+     * Show the escape page
+     *
+     * @return void
+     */
+    public function escapeAction()
+    {
+        // echo 'Hello from the index action in the Home controller!';
+        View::render('Home/escape.php');
     }
 }
