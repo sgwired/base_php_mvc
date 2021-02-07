@@ -7,7 +7,7 @@ namespace App\Controllers;
  * 
  * 
  */
-class Home
+class Home extends \Core\Controller
 {
     /**
      * Show the index page
