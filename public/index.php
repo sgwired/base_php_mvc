@@ -1,18 +1,38 @@
 <?php
-// echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
 
-require '../Core/Router.php';
+/**
+ * Front controller
+ *
+ * PHP version 5.4
+ */
 
-$router = new Router();
+// Require the controller class
+// require '../App/Controllers/Posts.php';
 
-// echo get_class($router);
+/**
+ * Autoloader
+ */
+spl_autoload_register(function ($class) {
+    $root = dirname(__DIR__); // Get parent director
+    $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+    if (is_readable($file)) {
+        require $root . '/' .  str_replace('\\', '/', $class) . '.php';
+    }
+});
+
+/**
+ * Routing
+ */
+// require '../Core/Router.php';
+
+$router = new Core\Router();
+
+// Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
-// $router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
-$router->add('admin/{action}/{controller}');
 
+/*
 // Display the routing table
 echo '<pre>';
 //var_dump($router->getRoutes());
@@ -30,3 +50,5 @@ if ($router->match($url)) {
 } else {
     echo "No route found for URL '$url'";
 }
+*/
+$router->dispatch($_SERVER['QUERY_STRING']);
