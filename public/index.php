@@ -8,27 +8,16 @@
 
 // Require the controller class
 // require '../App/Controllers/Posts.php';
+/**
+ * Composer
+ */
+require '../vendor/autoload.php';
 
 /**
  * Twig
  */
-// require_once dirname(__DIR__) . '/vendor/twig/twig/lib/Twig/Autoloader.php';
-require '../vendor/autoload.php';
 Twig_Autoloader::register();
 
-
-
-
-/**
- * Autoloader
- */
-spl_autoload_register(function ($class) {
-    $root = dirname(__DIR__); // Get parent director
-    $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
-    if (is_readable($file)) {
-        require $root . '/' .  str_replace('\\', '/', $class) . '.php';
-    }
-});
 
 /**
  * Routing
