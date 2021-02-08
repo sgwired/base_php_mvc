@@ -12,7 +12,8 @@
 /**
  * Twig
  */
-require_once dirname(__DIR__) . '/vendor/twig/twig/lib/Twig/Autoloader.php';
+// require_once dirname(__DIR__) . '/vendor/twig/twig/lib/Twig/Autoloader.php';
+require '../vendor/autoload.php';
 Twig_Autoloader::register();
 
 
