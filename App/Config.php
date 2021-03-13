@@ -26,13 +26,13 @@ class Config
      * Database user
      * @var string
      */
-    const DB_USER = 'root';
+    const DB_USER = 'mvclogin';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'mysql';
+    const DB_PASSWORD = 'mvclogin';
     /**
      * Show or hide error messages on screen
      * @var boolean
