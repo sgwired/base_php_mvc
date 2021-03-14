@@ -72,4 +72,17 @@ abstract class Controller
     protected function after()
     {
     }
+
+    /**
+     * Redirect to different page
+     * 
+     * @param string $url the relative URL of new page
+     * 
+     * @return void
+     */
+    public function redirect($url)
+    {
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . $url, true, 303);
+        exit;
+    }
 }
