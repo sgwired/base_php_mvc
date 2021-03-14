@@ -55,6 +55,20 @@ class Login extends \Core\Controller
 
         Auth::logout();
 
+        $this->redirect('/login/show-logout-message'); // starts a new session
+    }
+
+    /**
+     * Show logged out flash message and rediret to home page. Necessary to use the flash messages
+     * as they use the session which is destroyed with the logout method
+     * so new action is need to create a new session
+     * 
+     * @return void
+     */
+    public function showLogoutMessageAction()
+    {
+        Flash::addMessage('Logout successful');
+
         $this->redirect('/');
     }
 }
