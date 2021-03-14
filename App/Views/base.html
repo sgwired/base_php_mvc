@@ -6,7 +6,7 @@
 </head>
 <body>
     <nav>
-        {% if is_logged_in %}
+        {% if current_user %}
             <a href="/">Home</a> |
             Welcome {{current_user.name}} <a href="/logout"> Log out</a>
            
