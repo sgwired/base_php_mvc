@@ -6,9 +6,14 @@
 </head>
 <body>
     <nav>
-        <a href="/">Home</a> |
-        <a href="/signup/new">Signup</a>
-        <a href="/login">Login</a>
+        {% if session.user_id %}
+            <a href="/">Home</a> |
+            <a href="/logout">user with id: {{ session.user_id }} Log out</a>
+          
+        {% else %}
+            <a href="/signup/new">Signup</a>
+            <a href="/login">Login</a>
+        {% endif %}
     </nav>
 
     {% block body %}
