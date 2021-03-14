@@ -11,6 +11,17 @@ use App\Auth;
  */
 class Items extends \Core\Controller
 {
+
+    /**
+     * Require the use to be authenticated before giving access to all methods in the controller
+     * 
+     * @return void
+     */
+    protected function before()
+    {
+        $this->requireLogin();
+    }
+
     /**
      * Items indes
      * 
@@ -18,7 +29,6 @@ class Items extends \Core\Controller
      */
     public function indexAction()
     {
-        $this->requireLogin();
 
         View::renderTemplate('Items/index.html');
     }
