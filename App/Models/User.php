@@ -115,7 +115,9 @@ class User extends \Core\Model
 
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class()); // so we get an object and not hard code the class
+
         $stmt->execute();
 
         return $stmt->fetch();
@@ -140,5 +142,28 @@ class User extends \Core\Model
         }
 
         return false;
+    }
+
+    /**
+     * Find a user by the id
+     * 
+     * @param string $id the user id
+     * 
+     * @return mixed User object if found, false otherwise
+     */
+    public static function findByID($id)
+    {
+        $sql = 'SELECT * FROM users WHERE id = :id';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class()); // so we get an object and not hard code the class
+
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 }
