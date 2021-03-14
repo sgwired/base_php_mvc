@@ -6,9 +6,9 @@
 </head>
 <body>
     <nav>
-        {% if session.user_id %}
+        {% if is_logged_in %}
             <a href="/">Home</a> |
-            <a href="/logout">user with id: {{ session.user_id }} Log out</a>
+            <a href="/logout"> Log out</a>
           
         {% else %}
             <a href="/signup/new">Signup</a>
